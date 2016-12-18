@@ -1,10 +1,11 @@
 <?php
 include ('simple_html_dom.php');
 $html = file_get_html('http://www.edmancenter.com/index.php/cPath/233_58/');
-$i=1; # Request Limit
+$i=1;
 foreach($html->find('div.detail_container') as $e)
-    // if ($i==2)
+
     {
+          if ($i==2)# Request Limit
         # لیست محصول
         $item['title'] = trim($e->find('span.product_listing_name', 0)->innertext);
         $item['link'] = dirname($e->find('a.pro_name', 0)->href);
@@ -33,6 +34,8 @@ foreach($html->find('div.detail_container') as $e)
         }
         // $item = $bb;
         $ret[] = $item;
+        $output[] = $ret;
+        $ret=$item='';
         $i++;
     }
-print_r($ret);
+print_r($output);
