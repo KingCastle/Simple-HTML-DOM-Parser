@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>استخراج محصول</title>
-</head>
-<body>
-<form name="mform" method="post">
-	<input  type="text" name="url" />
-	<input type="submit" />
-</form>
-</body>
-</html>
+
 <?php
-$url=($_POST['url']);
+$url=(@$_POST['url']);
 if (!$url){
-	echo 'enter url';
-	exit();
+//	echo '';
+	exit('لطفا لینک لیست محصولات را وارد کنید');
 }else {
-	include('simple_html_dom.php');
+	include('../Plugins/simple_html_dom.php');
 	$html = file_get_html($url);
 	$i = 1;
 	foreach ($html->find('div.detail_container') as $e) {
