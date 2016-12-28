@@ -8,6 +8,7 @@ if (!$url){
 	$Single_product_html = file_get_html($url);
 	foreach ($Single_product_html->find('table.edman') as $o) {
 		$item['title'] = trim($o->find('span#product_info_name', 0)->innertext);
+		$item['code'] = trim($o->find('span#product_info_model span', 0)->innertext);
 		$item['price'] = trim($o->find('span.productPrice,span.productStatus', 0)->innertext);
 
 		$item['product']['description'] = trim($o->find('div.products_description_container', 0)->innertext);
