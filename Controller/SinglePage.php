@@ -1,5 +1,5 @@
 <?php
-$url=(@$_POST['url']);
+$url=(@dirname($_POST['url']));
 $ret[]=$output[]='';
 if (!$url){
 	exit('لطفا لینک  محصول را وارد کنید');

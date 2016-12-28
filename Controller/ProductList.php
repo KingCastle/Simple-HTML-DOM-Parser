@@ -1,6 +1,7 @@
 
 <?php
-$url=(@$_POST['url']);
+$url=(@dirname($_POST['url']));
+$ret[]=$output[]='';
 if (!$url){
 //	echo '';
 	exit('لطفا لینک لیست محصولات را وارد کنید');
@@ -33,7 +34,6 @@ if (!$url){
 				$cama = ',';
 			}
 		}
-		// $item = $bb;
 		$ret[] = $item;
 		$output[] = $ret;
 		$ret = $item = '';
