@@ -10,7 +10,7 @@ if (!$url){
 		$item['price'] = trim($o->find('span.productPrice,span.productStatus', 0)->innertext);
 
 		$item['product']['description'] = trim($o->find('div.products_description_container', 0)->innertext);
-		#ویژگی های محصول
+		# Product feature
 		foreach ($o->find('table.pef_group_container_table') as $value) {
 			foreach ($value->find('tr.pef_inner_container_box_group_container_row_odd,tr.pef_inner_container_box_group_container_row_even') as $tr) {
 				$item['product']['feature']['row_title'][] = trim($tr->find('td.pef_inner_container_box_group_container_row_title', 0)->innertext);
