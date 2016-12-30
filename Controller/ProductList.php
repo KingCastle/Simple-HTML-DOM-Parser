@@ -1,7 +1,7 @@
 
 <?php
 $url=(@dirname($_POST['url']));
-$ret[]=$output[]='';
+$item=$output[]='';
 if (!$url){
 //	echo '';
 	exit('لطفا لینک لیست محصولات را وارد کنید');
@@ -10,16 +10,14 @@ if (!$url){
 	$html = file_get_html($url);
 	$i = 1;
 	foreach ($html->find('div.detail_container') as $e) {
-		if ($i == 2)# Request Limit
+		if ($i == 1)# Request Limit
 			# لیست محصول
-			$item['title'] = trim($e->find('span.product_listing_name', 0)->innertext);
+		$item['title'] = trim($e->find('span.product_listing_name', 0)->innertext);
 		$item['link'] = dirname($e->find('a.pro_name', 0)->href);
 		$item['price'] = trim($e->find('span.productPrice,span.productStatus', 0)->innertext);
-		// $item['image-src'] = trim($e->find('img.products_images_class', 0)->src);
 		# مشخصات محصول
 		$inner_html = file_get_html($item['link']);
 		foreach ($inner_html->find('table.middle_content') as $o) {
-			// $item['product']['image-list'][] = trim($o->find('img.products_images_class',0)->src);
 			$item['product']['description'] = trim($o->find('div.products_description_container', 0)->innertext);
 			#ویژگی های محصول
 			foreach ($o->find('table.pef_group_container_table') as $value) {
